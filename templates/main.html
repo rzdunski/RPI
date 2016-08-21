@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+   <title>Current Status</title>
+</head>
+
+<body>
+   <h1>Device Listing and Status</h1>
+
+   {% for pin in pins %}
+   <p>
+   <h2>The {{ pins[pin].name }}
+   {% if pins[pin].state == true %}
+      is currently on (<a href="/{{pin}}/off">turn off</a>)
+   {% else %}
+      is currently off (<a href="/{{pin}}/on">turn on</a>)
+   {% endif %}
+    </h2>
+   </p>
+   {% endfor %}
+
+   {% if message %}
+   <p>
+   <h2>{{ message }}</h2>
+   </p>
+   {% endif %}
+
+   {% if message1 %}
+   <p>
+   <h2>{{ message1 }}</h2>
+   </p>
+   {% endif %}
+
+   {% if message2 %}
+   <p>
+   <h2>{{ message2 }}</h2>
+   </p>
+   {% endif %}
+
+   {% if message3 %}
+   <p>
+   <h2>{{ message3 }}</h2>
+   </p>
+   {% endif %}
+
+
+</body>
+</html>
