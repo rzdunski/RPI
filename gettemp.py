@@ -16,16 +16,3 @@ def gettemp(id):
         data.close()
         print temp_read
 
-#print "Temperatura zew:",tmp_read(id_outside),u'\xb0'+'C'
-#print "Temperatura wew:",tmp_read(id_inside),u'\xb0'+'C'
-
-#below some old test for using this function
-"""
-index = 2
-while index!=0:
-    id_inside = '28-000001cbe681'
-    id_outside = '10-000800ba9da0'
-    print "TMP OUT:", gettemp(id_outside)
-    print "TMP IN:", gettemp(id_inside)
-    index -= 1
-"""
