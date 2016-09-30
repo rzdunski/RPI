@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from flask import Flask, render_template, request
 import gettemp #import fuction for reading temperature
+import time
 
 #ids of ds18b20 sensors:
 id_inside = '28-000001cbe681'
@@ -11,7 +12,7 @@ app = Flask(__name__)
 # Create a dictionary called pins to store the pin number, name, and pin state:
 
 pins = {
-11: {'name':'heater_1_of_3', 'state': GPIO.LOW}
+11: {'name':'Vitodens 111-W', 'state': GPIO.LOW}
        }
 
 GPIO.setmode(GPIO.BOARD) #use PCB numberig
@@ -31,7 +32,8 @@ def main():
    templateData = {
       'pins' : pins, 
       'message1': 'Temp inside: ' + str(gettemp.gettemp(id_inside)) + ' ' + u'\xb0'+'C',
-      'message2': 'Temp outside: ' + str(gettemp.gettemp(id_outside)) + ' ' + u'\xb0'+'C'
+      'message2': 'Temp outside: ' + str(gettemp.gettemp(id_outside)) + ' ' + u'\xb0'+'C',
+      'timestamp': time.strftime('%H:%M:%S')
                   }
    # Pass the template data into the template main.html and return it to the user
    return render_template('main.html', **templateData)
@@ -53,11 +55,7 @@ def action(changePin, action):
    if action == "off":
       GPIO.output(changePin, GPIO.LOW)
       message = "Turned " + deviceName + " off."
-   if action == "toggle":
-      # Read the pin and set it to whatever it isn't (that is, toggle it):
-      GPIO.output(changePin, not GPIO.input(changePin))
-      message = "Toggled " + deviceName + "."
-
+   
    # For each pin, read the pin state and store it in the pins dictionary:
    for pin in pins:
       pins[pin]['state'] = GPIO.input(pin)
