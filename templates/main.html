@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <head>
    <title>Current Status</title>
+   <meta http-equiv="refresh" content="5" />
 </head>
 
 <body>
-   <h1>Device Listing and Status</h1>
+   <h1>Device Status</h1>
 
    {% for pin in pins %}
    <p>
@@ -42,6 +43,11 @@
    </p>
    {% endif %}
 
+   {% if timestamp %}
+   <p>
+   <h2>{{ timestamp }}</h2>
+   </p>
+   {% endif %}
 
 </body>
 </html>

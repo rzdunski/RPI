@@ -15,5 +15,5 @@ def gettemp(id):
     except:
         temp_read = 9999
         data.close()
-        print temp_read
+        return 9999
 
