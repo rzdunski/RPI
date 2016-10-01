@@ -10,8 +10,8 @@ def gettemp(id):
         temp_read = temp[index+2:-1]
         tmp_read = round(float(temp[67+2:-1])/1000, 1)
         data.close()
-	print temp_read
 	return tmp_read
+    
     except:
         temp_read = 9999
         data.close()
